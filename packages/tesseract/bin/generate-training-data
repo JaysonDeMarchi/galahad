@@ -1,0 +1,19 @@
+#! /bin/bash
+
+cd "$(dirname "$0")"
+TESSERACT_DIR="$(pwd)/.."
+cd ~-
+
+echo "🧹 Clearing Existing Training Data"
+rm -rf "$TESSERACT_DIR/train/*"
+
+echo "🖨️  Generating Training Data"
+tesstrain.sh \
+	--fontlist "Luckiest Guy Regular" \
+	--fonts_dir "$TESSERACT_DIR/fonts" \
+	--lang eng \
+	--linedata_only \
+	--langdata_dir "$TESSERACT_DIR/langdata_lstm" \
+	--save_box_tiff \
+	--maxpages 10 \
+	--output_dir "$TESSERACT_DIR/train"
