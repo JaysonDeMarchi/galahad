@@ -20,7 +20,6 @@ RUN apt-get update && \
 		automake \
 		bc \
 		g++ \
-		git \
 		libicu-dev \
 		libjpeg8-dev \
 		libleptonica-dev \
@@ -32,9 +31,16 @@ RUN apt-get update && \
 		make \
 		pkg-config \
 		python3-pip \
+		software-properties-common \
 		unzip \
 		vim \
 		wget
+
+RUN add-apt-repository ppa:git-core/ppa && \
+	apt-get install -y git && \
+	git clone --filter=blob:none --sparse https://github.com/tesseract-ocr/langdata_lstm.git && \
+	cd langdata_lstm && \
+	git sparse-checkout add "eng/"
 
 RUN mkdir src && \
 	cd /app/src && \
