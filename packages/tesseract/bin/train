@@ -1,0 +1,10 @@
+#! /bin/bash
+
+cd "$(dirname "$0")"
+TESSERACT_DIR="$(pwd)/.."
+cd ~-
+
+echo "🧹 Clearing Existing Test Data"
+rm -rf "$TESSERACT/train/*"
+
+
