@@ -42,7 +42,8 @@ RUN add-apt-repository ppa:git-core/ppa && \
 	cd langdata_lstm && \
 	git sparse-checkout add "eng/"
 
-RUN mkdir src && \
+RUN mkdir model && \
+	mkdir src && \
 	cd /app/src && \
 	wget https://github.com/tesseract-ocr/tesseract/archive/4.1.0.zip && \
 	unzip 4.1.0.zip && \
