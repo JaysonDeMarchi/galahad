@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd "$(dirname "$0")"
+TESSERACT_DIR="$(pwd)/.."
+cd ~-
+
+rm -rf "$TESSERACT_DIR/build/*"
+
+OMP_THREAD_LIMIT=8 lstmtraining \
+	--continue_from "$TESSERACT_DIR/model/eng.lstm" \
+	--model_output "$TESSERACT_DIR/build/btd6" \
+	--traineddata "$TESSDATA_PREFIX/eng.traineddata" \
+	--train_listfile "$TESSERACT_DIR/train/eng.training_files.txt" \
+	--max_iterations 400
