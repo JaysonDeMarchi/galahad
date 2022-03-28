@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd "$(dirname "$0")"
+TESSERACT_DIR="$(pwd)/.."
+cd ~-
+
+lstmtraining --stop_training \
+	--continue_from "$TESSERACT_DIR/build/btd6_checkpoint" \
+	--traineddata "$TESSDATA_PREFIX/eng.traineddata" \
+	--model_output "$TESSERACT_DIR/build/btd6.traineddata"
